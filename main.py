@@ -1,35 +1,30 @@
+from stats import *
+import sys
+
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+
+path_to_book = sys.argv[1]
+print(f"Processing oook: {path_to_book}")
 
 def main():
-    with open ("books/frankenstein.txt") as f:
-        file_contents = f.read()
-        return file_contents 
+    print(f"Debug: Processing book at path: {path_to_book}")
+    print(f"""============ BOOKBOT ============
+Analyzing book found at {path_to_book}...""")
+    print("----------- Word Count ----------")
+    word_count = get_num_words(path_to_book)
+    print(f"Debug: Word count result: {word_count}")
+    print(f"Found {word_count} total words")
+    print("--------- Character Count -------")
+    print_sorted(path_to_book)
+    print("============= END ===============")
 
-def word_count():
-    file_contents = main()
-    words = file_contents.split()
-    counter = 0
-    for word in words:
-        counter += 1
-    return counter
 
-def character_count():
-    file_contents = main()
-    lowercase_string = file_contents.lower()
-    character_dictionary = {}
-    for char in lowercase_string:
-        if char in character_dictionary: 
-            character_dictionary[char] += 1
-        else:
-            character_dictionary[char] = 1
-    return character_dictionary
+main()
+"""
 
-def alpha():
-    char_dictionary = character_count()
-    alpha_dictionary = {}
-    for char in char_dictionary:
-        if char.isalpha() == True:
-            alpha_dictionary[char] = char_dictionary[char]
-    return alpha_dictionary
+
 
 def alpha_report():
     alpha_dict = alpha()
@@ -46,3 +41,5 @@ def report():
     return report_briefing, count, alpha_list, end_report
 
 print(report())
+
+"""
